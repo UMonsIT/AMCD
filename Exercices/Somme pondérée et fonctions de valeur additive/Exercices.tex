@@ -1,10 +1,22 @@
 \documentclass[a4paper, 12pt]{article}
-\usepackage{amsmath}
+\usepackage{amsmath,mathtools}
 \usepackage[utf8]{inputenc}
+
+% Math commands
+\newcommand*{\indif}[4]{#1 \prescript{}{#2}{\sim}_{#3} #4}
 
 \renewcommand{\partname}{} 
 
 \begin{document}
+	\section*{Notation}
+	Soit $i,j \in \mathbf{N}$, $c_i$ le critère d'indice $i$, $v_{c_i}$ la valeur du critère d'indice $i$,
+	la notation:
+	$$\indif{(v_{c_i},v'_{c_i})}{c_i}{c_j}{(v_{c_j},v'_{c_j})}$$
+	Signifie que pour passer de $v_{c_i}$ à $v'_{c_i}$ sur le critère $c_i$, on est prêt à passer de
+	$v_{c_j}$ à $v'_{c_j}$ sur le critère $c_j$.\\
+	
+	Par exemple, $\indif{(1,2)}{1}{2}{(5,4)}$ signifie que pour passer de $1$ à $2$ sur
+	le critère $1$, on est prêt à passer de $5$ à $4$ sur le critère $2$.
 	\section*{Exercice 1}
 		\subsection*{Partie 1}
 			Voir fichier \textit{ChoixDeThierry}, feuille 
