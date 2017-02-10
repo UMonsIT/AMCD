@@ -3,7 +3,8 @@
 \usepackage[utf8]{inputenc}
 
 % Math commands
-\newcommand*{\indif}[4]{#1 \prescript{}{#2}{\sim}_{#3} #4}
+\newcommand*{\indif}[2]{#1 \sim #2}
+\newcommand*{\indifchange}[4]{#1 \prescript{}{#2}{\sim}_{#3} #4}
 
 \renewcommand{\partname}{} 
 
@@ -11,11 +12,11 @@
 	\section*{Notation}
 	Soit $i,j \in \mathbf{N}$, $c_i$ le critère d'indice $i$, $v_{c_i}$ la valeur du critère d'indice $i$,
 	la notation:
-	$$\indif{(v_{c_i},v'_{c_i})}{c_i}{c_j}{(v_{c_j},v'_{c_j})}$$
+	$$\indifchange{(v_{c_i},v'_{c_i})}{c_i}{c_j}{(v_{c_j},v'_{c_j})}$$
 	Signifie que pour passer de $v_{c_i}$ à $v'_{c_i}$ sur le critère $c_i$, on est prêt à passer de
 	$v_{c_j}$ à $v'_{c_j}$ sur le critère $c_j$.\\
 	
-	Par exemple, $\indif{(1,2)}{1}{2}{(5,4)}$ signifie que pour passer de $1$ à $2$ sur
+	Par exemple, $\indifchange{(1,2)}{1}{2}{(5,4)}$ signifie que pour passer de $1$ à $2$ sur
 	le critère $1$, on est prêt à passer de $5$ à $4$ sur le critère $2$.
 	\section*{Exercice 1}
 		\subsection*{Partie 1}
@@ -103,21 +104,35 @@
 			(1, 5, 3) $\sim$ (2, 4, 3) $\rightarrow$ On remarque que le 
 				$3^{\text{ème}}$ critère est commun aux deux vecteurs, 
 				il vaut 3. On peut donc faire le rapport entre k1 et k2.
-				$$ k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5) + 
-				k_1\cdot u^{'}_{3}(3) = k_1\cdot u^{'}_{1}(2) + 
-				k_2\cdot u^{'}_{2}(4) + k_3\cdot u^{'}_{3}(3) $$
-				$$ \Leftrightarrow 
-				k_1\cdot u^{'}_{1}(1) + 
-				k_2\cdot u^{'}_{2}(5) = k_1\cdot u^{'}_{1}(2) + 
-				k_2\cdot u^{'}_{2}(4) $$
-				$$ \Leftrightarrow 
-					\frac{k_1}{k_2} = 
-					\frac{u^{'}_{1}(2) - u^{'}_{1}(1)}
-						 {u^{'}_{2}(5) - u^{'}_{2}(4))}$$
+			\begin{center}
+			\begin{tabular}{rcl}
+				$ k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5) + k_1\cdot u^{'}_{3}(3)$
+				& $=$ & $k_1\cdot u^{'}_{1}(2) + k_2\cdot u^{'}_{2}(4) + k_3\cdot u^{'}_{3}(3) $\\
+				%$$ \Leftrightarrow 
+				$k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5)$
+				& $=$ & $k_1\cdot u^{'}_{1}(2) + k_2\cdot u^{'}_{2}(4)$\\
+				$\frac{k_1}{k_2}$ & $=$ &
+					$\frac{u^{'}_{1}(2) - u^{'}_{1}(1)}
+						 {u^{'}_{2}(5) - u^{'}_{2}(4))}$
+			\end{tabular}
+			\end{center}
 		\subsection*{Partie 2}
 			En remettant les nouvelles valeurs dans la formule donnée 
 			ci-dessus, on trouve:
 			$$ \frac{k_1}{k_2} = \frac{4 - 2}{17 - 16} = \frac{2}{1}$$
 		\subsection*{Partie 3}
+			Depuis les jugements d'indifférence fournis dans l'énoncé ont peut déduire
+			les jugements indifférence suivants:
+			\begin{center}
+			\begin{tabular}{rcl}
+				$\indif{(1,5,3)}{(2,4,3)}$ & $\Rightarrow$ & $\indif{(1,5)}{(2,4)}$\\
+				$\indif{(1,4,3)}{(2,2,3)}$ & $\Rightarrow$ & $\indif{(1,4)}{(2,2)}$\\
+				$\indif{(1,2,3)}{(2,0,3)}$ & $\Rightarrow$ & $\indif{(1,2)}{(2,0)}$
+			\end{tabular}
+			\end{center}
+			En effet, le critère en indice $3$ a la valeur $3$ pour chaque indifférence, il
+			sera donc simplifié dans l'équation du modèle.
+			
+			\textbf{TODO: graphe des valeurs marginales}
 			
 \end{document}
