@@ -3,8 +3,10 @@
 \usepackage[utf8]{inputenc}
 
 % Math commands
-\newcommand*{\indif}[2]{#1 \sim #2}
-\newcommand*{\indifchange}[4]{#1 \prescript{}{#2}{\sim}_{#3} #4}
+\newcommand*{\indif}{\sim}
+\newcommand*{\stricpref}{\prec}
+\newcommand*{\indifchange}[2]{\prescript{}{#1}{\indif}_{#2}}
+\newcommand*{\stricprefchange}[2]{\prescript{}{#1}{\stricpref}_{#2}}
 
 \renewcommand{\partname}{} 
 
@@ -12,11 +14,11 @@
 	\section*{Notation}
 	Soit $i,j \in \mathbf{N}$, $c_i$ le critère d'indice $i$, $v_{c_i}$ la valeur du critère d'indice $i$,
 	la notation:
-	$$\indifchange{(v_{c_i},v'_{c_i})}{c_i}{c_j}{(v_{c_j},v'_{c_j})}$$
+	$$(v_{c_i},v'_{c_i})\indifchange{c_i}{c_j}(v_{c_j},v'_{c_j})$$
 	Signifie que pour passer de $v_{c_i}$ à $v'_{c_i}$ sur le critère $c_i$, on est prêt à passer de
 	$v_{c_j}$ à $v'_{c_j}$ sur le critère $c_j$.\\
 	
-	Par exemple, $\indifchange{(1,2)}{1}{2}{(5,4)}$ signifie que pour passer de $1$ à $2$ sur
+	Par exemple, $(1,2)\indifchange{1}{2}(5,4)$ signifie que pour passer de $1$ à $2$ sur
 	le critère $1$, on est prêt à passer de $5$ à $4$ sur le critère $2$.
 	\section*{Exercice 1}
 		\subsection*{Partie 1}
@@ -79,21 +81,19 @@
 		\\~\\
 		%
 		\textbf{(2)} Et si le décideur nous dit que 
-		$$ (2, 1, 4) \prec (4, 1, 3) $$
+		$$ (2, 1, 4) \stricpref (4, 1, 3) $$
 		On peut en déduire le modèle d'utilité suivant :
-		$$ k_1 \cdot u^{'}_{1}(2) + k_2 \cdot u^{'}_{2}(1) + 
-		   k_3 \cdot u^{'}_{3}(4) <
-		   k_1 \cdot u^{'}_{1}(4) + k_2 \cdot u^{'}_{2}(1) + 
-		   k_3 \cdot u^{'}_{3}(3) $$
-		$$ \Leftrightarrow 
-		   k_1 \cdot u^{'}_{1}(2) + k_3 \cdot u^{'}_{3}(4) <
-		   k_1 \cdot u^{'}_{1}(4) + k_3 \cdot u^{'}_{3}(3) $$
-		$$ \Leftrightarrow 
-		   k_1 \cdot (u^{'}_{1}(1) - u^{'}_{1}(4)) < 
-		   k_3 \cdot (u^{'}_{3}(4) - u^{'}_{3}(4)) $$
-		$$ \Leftrightarrow 
-		   (2, 4)\ _1<_3\ (3, 4) $$
-		%
+		\begin{center}
+		\begin{tabular}{crcl}
+		& $k_1 \cdot u^{'}_{1}(2) + k_2 \cdot u^{'}_{2}(1) + k_3 \cdot u^{'}_{3}(4)$ & $<$ &
+		   $k_1 \cdot u^{'}_{1}(4) + k_2 \cdot u^{'}_{2}(1) + k_3 \cdot u^{'}_{3}(3) $ \\
+		$\Leftrightarrow$ & $k_1 \cdot u^{'}_{1}(2) + k_3 \cdot u^{'}_{3}(4)$ & $<$ &
+			$k_1 \cdot u^{'}_{1}(4) + k_3 \cdot u^{'}_{3}(3)$ \\
+		$\Leftrightarrow$ & $k_1 \cdot (u^{'}_{1}(1) - u^{'}_{1}(4))$ & $<$ & 
+			$k_3 \cdot (u^{'}_{3}(4) - u^{'}_{3}(4))$ \\
+		$\Leftrightarrow$ & $(2, 4)$ & $\stricprefchange{1}{3}$ & $(3, 4)$
+		\end{tabular}
+		\end{center}
 		Par \textbf{(1)} et \textbf{(2)}, on trouve qu'on ne peut pas
 		utiliser le modèle par fonction de valeur
 		additive, on retrouve le même problème que dans l'exemple 
@@ -105,13 +105,13 @@
 				$3^{\text{ème}}$ critère est commun aux deux vecteurs, 
 				il vaut 3. On peut donc faire le rapport entre k1 et k2.
 			\begin{center}
-			\begin{tabular}{rcl}
-				$ k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5) + k_1\cdot u^{'}_{3}(3)$
+			\begin{tabular}{crcl}
+				& $ k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5) + k_1\cdot u^{'}_{3}(3)$
 				& $=$ & $k_1\cdot u^{'}_{1}(2) + k_2\cdot u^{'}_{2}(4) + k_3\cdot u^{'}_{3}(3) $\\
 				%$$ \Leftrightarrow 
-				$k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5)$
+				$\Leftrightarrow$ & $k_1\cdot u^{'}_{1}(1) + k_2\cdot u^{'}_{2}(5)$
 				& $=$ & $k_1\cdot u^{'}_{1}(2) + k_2\cdot u^{'}_{2}(4)$\\
-				$\frac{k_1}{k_2}$ & $=$ &
+				$\Leftrightarrow$ & $\frac{k_1}{k_2}$ & $=$ &
 					$\frac{u^{'}_{1}(2) - u^{'}_{1}(1)}
 						 {u^{'}_{2}(5) - u^{'}_{2}(4))}$
 			\end{tabular}
@@ -125,9 +125,9 @@
 			les jugements indifférence suivants:
 			\begin{center}
 			\begin{tabular}{rcl}
-				$\indif{(1,5,3)}{(2,4,3)}$ & $\Rightarrow$ & $\indif{(1,5)}{(2,4)}$\\
-				$\indif{(1,4,3)}{(2,2,3)}$ & $\Rightarrow$ & $\indif{(1,4)}{(2,2)}$\\
-				$\indif{(1,2,3)}{(2,0,3)}$ & $\Rightarrow$ & $\indif{(1,2)}{(2,0)}$
+				$(1,5,3) \indif (2,4,3)$ & $\Rightarrow$ & $(1,5) \indif (2,4)$\\
+				$(1,4,3) \indif (2,2,3)$ & $\Rightarrow$ & $(1,4) \indif (2,2)$\\
+				$(1,2,3) \indif (2,0,3)$ & $\Rightarrow$ & $(1,2) \indif (2,0)$
 			\end{tabular}
 			\end{center}
 			En effet, le critère en indice $3$ a la valeur $3$ pour chaque indifférence, il
